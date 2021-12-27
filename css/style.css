@@ -18,13 +18,60 @@
 
 body {
     text-align: center;
+    display: flex;
+    flex-flow: column;
 }
 main {
-
+    display: flex;
 }
-footer {
 
+section.content {
+    flex: 80;
 }
+aside {
+    flex: 20;
+    border: 1px solid var(--palette2);
+    margin-right: 5px;
+}
+nav {
+    position: sticky;
+    top: 0;
+    margin-top: 32px;
+}
+aside a {
+    display: block;
+    width: 80%;
+    transition: width 0.1s;
+}
+aside a:hover {
+    width: 90%;
+}
+footer div, footer a {
+    color: white;
+    border: none;
+}
+
+
+@media(max-width: 1000px) {
+    aside a {
+        margin: 4px auto;
+    }
+
+    main {
+        flex-flow: column;
+    }
+    section.content {
+        width: 100%;
+    }
+    aside {
+        width: 100%;
+    }
+    footer {
+        width: 100%;
+    }
+}
+
+
 
 p {
     font-size: 20px;
@@ -41,7 +88,7 @@ a {
     text-decoration: none;
 }
 a:hover {
-    color: black;
+    color: white;
     background-color: var(--anchorColor);
 }
 
@@ -87,6 +134,61 @@ table th {
 table tr:nth-child(even){background-color: rgba(109, 103, 110, 0.1);}
 table tr:hover {background-color: rgba(109, 103, 110, 0.5);}
 
+
+/* title for different sections */
+.title {
+    background-color: var(--palette2);
+    color: white;
+    padding: 32px;
+    margin: 32px 0;
+    font-size: 64px;
+}
+.title img {
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+div.articleContainer {
+    display: flex;
+    flex-flow: column;
+}
+div.articleContainer article {
+    padding: 32px;
+    display: flex;
+    flex-flow: row;
+    flex-direction: row;
+}
+div.articleContainer article:nth-child(even) {
+    flex-direction: row-reverse;
+}
+div.articleContainer article img {
+    padding: 64px;
+}
+@media(max-width: 1000px) {
+    div.articleContainer article img {
+        margin: 0 auto;
+    }
+    div.articleContainer article {
+        flex-flow: column !important;
+    }
+}
+
+
+.portfolio div {
+    display: inline-block;
+    width: 500px;
+    padding: 16px;
+    margin: 16px auto;
+    border: solid 1px black;
+}
+@media(max-width: 1000px) {
+    .portfolio div {
+        display: block;
+    }
+}
+
+
 .colorBox {
     color: rgb(251, 255, 254);
     background-color: var(--themeColor);
@@ -98,6 +200,7 @@ table tr:hover {background-color: rgba(109, 103, 110, 0.5);}
     background-color: white;
     padding: 16px;
     margin: 0 10%;
+    border-radius: 16px;
 }
 
 
@@ -112,20 +215,16 @@ table tr:hover {background-color: rgba(109, 103, 110, 0.5);}
 .stripesContainer:before, .stripesContainer:after {
     content: '';
     background-color: rgb(121, 6, 26);
-    width: 3%;
+    width: 5%;
     height: 100%;
     position: absolute;
     top: 0;
 }
-.stripesContainer:before {
-    left: 0;
-}
-.stripesContainer:after {
-    right: 0;
-}
+.stripesContainer:before { left: 0; }
+.stripesContainer:after { right: 0; }
 .stripes {
     position: absolute;
-    left: -46px;
+    left: -23px;
     right: 0;
     top: 0;
     bottom: 0;
@@ -138,13 +237,13 @@ table tr:hover {background-color: rgba(109, 103, 110, 0.5);}
             rgb(121, 6, 26) 12px,
             rgb(121, 6, 26) 20px
     ) fixed;
-    animation: stripesAnimation linear 1s infinite;
+    animation: stripesAnimation linear 2s infinite;
 }
 @keyframes stripesAnimation {
     from{
         transform: translateX(0);
     }
     to {
-        transform: translateX(46px);
+        transform: translateX(23px);
     }
 }
