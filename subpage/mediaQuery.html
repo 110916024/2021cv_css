@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陳暄興 | 多媒體概論</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        body {
+            font-size: 24px;
+            font-family: sans-serif;
+        }
+
+
+        .text1, .text2, .text3, .text4 {
+            display: none;
+        }
+        .media {
+            width: 400px;
+            height: 400px;
+            margin: auto;
+        }
+        @media(max-width: 800px) {
+            .media {background-color: red;}
+            .text1{display: block}
+        }
+        @media(min-width: 800px) and (max-width: 1000px) {
+            .media {background-color: orange;}
+            .text2{display: block} }
+        @media(min-width: 1000px) and (max-width: 1200px) {
+            .media {background-color: yellow;}
+            .text3{display: block}
+        }
+        @media(min-width: 1200px) {
+            .media {background-color: green;}
+            .text4{display: block}
+        }
+
+
+
+        .bar {
+            width: 100%;
+            height: 40px;
+            overflow-x: hidden;
+            white-space: nowrap;
+        }
+        .bar1, .bar2, .bar3, .bar4 {
+            display: inline-block;
+            text-align: right;
+            height: 100%;
+            float:left;
+            top: 0;
+        }
+        .bar1 {
+            width: 200px;
+            background-color: green;
+        }
+        .bar2 {
+            width: 200px;
+            background-color: yellow;
+        }
+        .bar3 {
+            width: 200px;
+            background-color: orange;
+        }
+        .bar4 {
+            width: 800px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<a href="../index.html">返回</a>
+
+<div class="media">
+
+</div>
+
+<p class="text1">800px -</p>
+<p class="text2">800px ~ 1000px</p>
+<p class="text3">1000px ~ 1200px</p>
+<p class="text4">1200px +</p>
+
+<div class="bar">
+    <div class="bar4">800px</div>
+    <div class="bar3">1000px</div>
+    <div class="bar2">1200px</div>
+    <div class="bar1">1200px+</div>
+</div>
+
+
+</body>
+</html>

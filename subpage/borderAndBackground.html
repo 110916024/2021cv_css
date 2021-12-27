@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陳暄興 | 多媒體概論</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        body {
+            font-size: 24px;
+            font-family: sans-serif;
+        }
+
+        .border1, .border2, .border3 {
+            margin: 32px;
+            width: 200px;
+            height: 200px;
+        }
+        .border1{
+            border: black 3px solid;
+        }
+        .border2{
+            border: black 3px dotted;
+        }
+        .border3 {
+            border: black 3px dashed;
+        }
+
+        .borderDisplay, .backgroundDisplay {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin: 16px auto;
+        }
+
+        .backgroundDisplay {
+            border: 5px solid black;
+            width: 90%;
+            left: 5%;
+            padding: 16px;
+        }
+        .bg1, .bg2, .bg3, .bg4 {
+            margin: 32px;
+            background-image: url("../images/doge.jpg");
+            border: 2px dashed black;
+            width: 200px;
+            height: 200px;
+        }
+        .bg1 {
+            background-repeat: repeat;
+        }
+        .bg2 {
+            background-repeat: no-repeat;
+        }
+        .bg3 {
+            background-repeat: repeat-x;
+        }
+        .bg4 {
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+<a href="../index.html">返回</a>
+
+<h1>Border</h1>
+<div class="borderDisplay">
+    <div>
+        <div class="border1"></div>
+        solid
+    </div>
+    <div>
+        <div class="border2"></div>
+        dotted
+    </div>
+    <div>
+        <div class="border3"></div>
+        dashed
+    </div>
+</div>
+
+
+
+<h1>Background</h1>
+<div class="backgroundDisplay">
+    <div>
+        <div class="bg1"></div>
+        repeat
+    </div>
+    <div>
+        <div class="bg2"></div>
+        no-repeat
+    </div>
+    <div>
+        <div class="bg3"></div>
+        repeat-x
+    </div>
+    <div>
+        <div class="bg4"></div>
+        background-attachment: fixed
+    </div>
+</div>
+
+
+</body>
+</html>
