@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陳暄興 | 多媒體概論</title>
+
+    <style>
+        h1 {
+            font-size: 64px;
+            margin: 0;
+        }
+
+        @media  {
+            @media(max-width: 800px) {
+                #links a {
+                    display: block;
+                    margin: 16px;
+                }
+            }
+        }
+
+        #links a {
+            box-shadow: white 0 0 25px 0 inset, white 0 0 5px 0;
+        }
+
+        *  {
+            font-family: "Yu Gothic UI", sans-serif;
+        }
+    </style>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+<main>
+    <!-- Side box -->
+    <aside>
+        <!-- side nav, is moved to top if(max-width: 1000px) -->
+        <nav>
+            <a href="../index.html">返回</a>
+            <a href="#top">移至頂部</a>
+            <a href="#bottom">移至底部</a>
+        </nav>
+    </aside>
+    <!-- Main content -->
+    <section class="content" id="top">
+        <section>
+            <!-- Animated stripes -->
+            <div class="stripesContainer">
+                <div class="stripes"></div>
+            </div>
+
+            <div class="colorBox" style="margin-top: 10px;">
+                <div class="textBox">
+                    <h2>希望老師評分時注意到的幾點</h2>
+                    <p>
+                        如果沒注意到的話希望注意到的一些細節或東西 :)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <div class="articleContainer">
+                <article>
+                    <div>
+                        <h2>RWD</h2>
+                        <p>我有嘗試使用 media query 使這個網頁會隨裝置寬度調整版面</p>
+                    </div>
+                </article>
+                <article>
+                    <div>
+                        <h2>CSS 動畫</h2>
+                        <p>hr tag 分割線的動畫 & 獎項和文章區的hover動畫</p>
+                    </div>
+                </article>
+                <article>
+                    <div>
+                        <h2>應該差不多了</h2>
+                        <p>其實這個子頁面只是弄來讓文章區不會只有一個連結 :)</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </section>
+</main>
+<br>
+<footer>
+    <div class="stripesContainer" id="bottom">
+        <div class="stripes"></div>
+    </div>
+</footer>
+</body>
+</html>

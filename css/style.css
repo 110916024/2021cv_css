@@ -47,6 +47,7 @@ aside a:hover {
     width: 90%;
 }
 footer div, footer a {
+    background-color: unset;
     color: white;
     border: none;
 }
@@ -69,6 +70,9 @@ footer div, footer a {
     footer {
         width: 100%;
     }
+    footer, footer a {
+        font-size: 12px;
+    }
 }
 
 
@@ -78,6 +82,7 @@ p {
 }
 
 a {
+    background-color: rgba(255,255,255,0.7);
     font-weight: 800;
     font-size: 20px;
     color: var(--anchorColor);
@@ -142,6 +147,7 @@ table tr:hover {background-color: rgba(109, 103, 110, 0.5);}
     padding: 32px;
     margin: 32px 0;
     font-size: 64px;
+    overflow: hidden;
 }
 .title img {
     width: 100px;
@@ -166,6 +172,9 @@ div.articleContainer article img {
     padding: 64px;
 }
 @media(max-width: 1000px) {
+    .title {
+        font-size: 48px !important;
+    }
     div.articleContainer article img {
         margin: 0 auto;
     }
@@ -181,6 +190,49 @@ div.articleContainer article img {
     padding: 16px;
     margin: 16px auto;
     border: solid 1px black;
+    background-color: white;
+    overflow: hidden;
+    transition: transform 0.1s;
+}
+.portfolio div:hover {
+    transform: scale(1.05);
+    z-index: 999;
+    box-shadow: rgba(0,0,0,0.1) 0 0 10px;
+}
+.portfolio div:before {
+    content: ' ';
+    z-index: -1;
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    bottom: -300px;
+    left: -300px;
+    border-top: 300px solid transparent;
+    border-bottom: 300px solid transparent;
+    border-left: 300px solid transparent;
+    transition: left 0.1s ease;
+}
+.portfolio div:hover:before {
+    left: -20%;
+    border-left: 300px solid orangered;
+}
+.portfolio a {
+    border: none;
+    background-color: rgba(255,255,255,0.7);
+    color: unset;
+    cursor: pointer;
+}
+.portfolio a:hover {
+    background-color: white;
+}
+.portfolio a:hover div:after {
+    content: '點擊閱讀';
+    color: white;
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
 }
 @media(max-width: 1000px) {
     .portfolio div {

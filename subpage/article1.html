@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陳暄興 | 多媒體概論</title>
+
+    <style>
+        h1 {
+            font-size: 64px;
+            margin: 0;
+        }
+
+        @media  {
+            @media(max-width: 800px) {
+                #links a {
+                    display: block;
+                    margin: 16px;
+                }
+            }
+        }
+
+        #links a {
+            box-shadow: white 0 0 25px 0 inset, white 0 0 5px 0;
+        }
+
+        *  {
+            font-family: "Yu Gothic UI", sans-serif;
+        }
+    </style>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+<main>
+    <!-- Side box -->
+    <aside>
+        <!-- side nav, is moved to top if(max-width: 1000px) -->
+        <nav>
+            <a href="../index.html">返回</a>
+            <a href="#top">移至頂部</a>
+            <hr>
+            <a href="#intro">簡介</a>
+            <a href="#orientation">基本旋轉</a>
+            <a href="#wallKick">踢牆</a>
+            <hr>
+            <a href="#bottom">移至底部</a>
+        </nav>
+    </aside>
+    <!-- Main content -->
+    <section class="content" id="top">
+        <section>
+            <!-- Animated stripes -->
+            <div class="stripesContainer">
+                <div class="stripes"></div>
+            </div>
+
+            <div class="colorBox" style="margin-top: 10px;">
+                <div class="textBox">
+                    <div id="intro">
+                        <h1>俄羅斯方塊: SRS 機制簡介</h1>
+
+                        <p>(文章複製自Google翻譯後的 <span><a href="https://tetris.fandom.com/wiki/SRS" target="_blank">SRS | Tetris Wiki</a></span>)</p>
+                        <p style="text-align: left;">超級旋轉系統，也稱為 SRS 和標準旋轉系統，是當前的俄羅斯方塊指南標準，用於說明 tetromino 的行為方式，定義了 tetromino 生成的位置和方式、它們如何旋轉以及它們可以執行的踢牆動作。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="orientation">
+            <div class="articleContainer">
+                <div>
+                    <img src="../images/tetris-orientation.png" alt="orientation" width="200">
+                    <h4>各方塊的旋轉轉軸圖示</h4>
+                </div>
+                <article style="display: block;">
+                    <h2>基本旋轉</h2>
+                    <ul style="text-align: left;">
+                        <li>基本旋轉狀態如右圖所示。需要注意的幾點：</li>
+                        <li>當暢通無阻時，四聯骨牌似乎都完全圍繞一個點旋轉。這些明顯的旋轉中心在圖中顯示為圓圈。</li>
+                        <li>它是數學意義上的純粹旋轉，與世嘉旋轉和雅達利旋轉等其他系統中的旋轉和平移的組合相反。</li>
+                        <li>直接結果是，J、L、S、T 和 Z 四聯體的 4 個狀態（生成狀態）中的 1 個處於“浮動”位置，它們不與邊界框的底部接觸。</li>
+                        <li>這允許邊界框下降到堆棧表面（或比賽場地的地板）以下，使得在沒有地板踢的幫助下無法旋轉四聯骨牌。</li>
+                        <li>S、Z 和 I tetrominoes 有兩個水平方向的狀態和兩個垂直方向的狀態。可以說，有兩個垂直狀態會導致更快的技巧。</li>
+                        <li>對於“I”和“O”四聯體，視在旋轉中心在網格線的交叉處，而對於“J”、“L”、“S”、“T”和“Z”四聯體，旋轉中心重合與四個組成米諾之一的中心。</li>
+                    </ul>
+                </article>
+                <article>
+                    <div id="wallKick">
+                        <h2>踢牆 (Wall Kick)</h2>
+                        <p style="text-align: left">
+                            SRS 有超級牆踢。與大多數具有超級踢球的旋轉系統不同，這些牆踢球相對溫和。當玩家嘗試旋轉 Tetromino，但它在基本旋轉後通常佔據的位置受到阻礙時（被比賽場地的牆壁或地板，或被堆疊），遊戲將嘗試將 Tetromino“踢”入附近的替代位置。需要注意的幾點：<br>
+
+                            嘗試旋轉時，依次測試 5 個位置（包括基本旋轉）；如果沒有可用的，則輪換完全失敗。<br>
+                            測試哪些位置由初始旋轉狀態和所需的最終旋轉狀態決定。因為可以順時針和逆時針旋轉，所以對於 4 個初始狀態中的每一個都有 2 個最終狀態。因此，每個 tetromino 總共有 8 種可能的旋轉，需要描述 8 組踢牆數據。<br>
+                            這些位置通常被描述為一系列（x，y）kick 值，表示相對於基本旋轉的平移；使用正 x 向右，正 y 向上的約定，例如(-1, 2) 表示踢左 1 個單元格和向上 2 個單元格。<br>
+                            J、L、T、S 和 Z tetromino 都具有相同的踢腿值，I tetromino 有自己的一組踢腿值，而 O tetromino 不踢腿。<br>
+                            旋轉狀態的命名通常使用幾種不同的約定。在此頁面上，將使用以下約定：<br>
+                            0 = 生成狀態<br>
+                            1 = 從 spawn 順時針旋轉（“右”）產生的狀態<br>
+                            2 = 從 spawn 向任一方向連續 2 次旋轉產生的狀態。<br>
+                            3 = 從 spawn 逆時針（“左”）旋轉產生的狀態
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </section>
+</main>
+<br>
+<footer>
+    <div class="stripesContainer" id="bottom">
+        <div class="stripes"></div>
+
+        <p style="color: white;">以上文章來自Google翻譯後的<a href="https://tetris.fandom.com/wiki/SRS" target="_blank">https://tetris.fandom.com/wiki/SRS</a></p>
+    </div>
+</footer>
+</body>
+</html>

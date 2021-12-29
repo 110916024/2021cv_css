@@ -30,6 +30,7 @@
     </style>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
 </head>
 <body>
     <main>
@@ -41,8 +42,9 @@
                 <hr>
                 <a href="#intro">關於我</a>
                 <a href="#hobbies">興趣</a>
-                <a href="#skills">技能</a>
+                <a href="#skills">工作經驗</a>
                 <a href="#achievements">成就</a>
+                <a href="#articles">我的文章</a>
                 <hr>
                 <a href="#bottom">移至底部</a>
             </nav>
@@ -59,11 +61,21 @@
                     <img src="images/pfp.png" alt="profile picture" style="margin: 10px;">
 
                     <div class="textBox">
-                        <h1>陳暄興</h1>
+                        <div>
+                            <h1>陳暄興</h1>
 
-                        <p><em><strong><a href="https://www.ntue.edu.tw/" target="_blank">國立台北教育大學</a></strong>資訊科學系</em></p>
-                        <p>國立台北教育大學，資訊科學系，資二甲的一名學生</p>
+                            <p><em><strong><a href="https://www.ntue.edu.tw/" target="_blank">國立台北教育大學</a></strong>資訊科學系</em></p>
+                            <p>國立台北教育大學，資訊科學系，資二甲的一名學生</p>
+                        </div>
+
+                        <div style="position: relative; width: auto;">
+                            <div style="overflow: hidden; position: absolute; bottom: 0; height: 200px; width: 100%;">
+                                <pre id="typewriter" style="position: absolute; left: 20px; bottom: 0; text-align: left; color: rgba(0,0,0,0.3); overflow: hidden;"></pre>
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
             </section>
 
@@ -160,23 +172,51 @@
                         <h2>獎項1 (2021)</h2>
                         <p>獎項名稱之類之類</p>
                     </div>
-
                     <div>
                         <h2>獎項2 (2021)</h2>
                         <p>獎項名稱之類之類</p>
                     </div>
-
                     <div>
                         <h2>獎項3 (2021)</h2>
                         <p>獎項名稱之類之類</p>
                     </div>
+                    <div>
+                        <h2>檢定認證1 (2021)</h2>
+                        <p>某認證之類之類</p>
+                    </div>
+                    <div>
+                        <h2>檢定認證2 (2021)</h2>
+                        <p>某認證之類之類</p>
+                    </div>
+                    <div>
+                        <h2>檢定認證3 (2021)</h2>
+                        <p>某認證之類之類</p>
+                    </div>
+                </div>
+            </section>
+            <section id="articles">
+                <div class="title"><img alt="article" src="images/article.png"/>我的文章</div>
+                <div class="portfolio">
+
+                    <a href="subpage/article1.html">
+                        <div>
+                            <h2>文章: 俄羅斯方塊SRS簡介</h2>
+                            <p>關於SRS機制的簡介</p>
+                        </div>
+                    </a>
+
+                    <a href="subpage/article2.html">
+                        <div>
+                            <h2>有RWD</h2>
+                            <p>F12一下，感謝</p>
+                        </div>
+                    </a>
                 </div>
             </section>
         </section>
    </main>
+    <br>
     <footer>
-        <hr>
-
         <div class="stripesContainer" id="bottom">
             <div class="stripes"></div>
 
@@ -186,3 +226,163 @@
     </footer>
 </body>
 </html>
+
+
+
+<script>
+    setInterval(type, 10);
+
+    //typewriter
+    let typewriter = document.getElementById("typewriter");
+    let i = 0;
+    function type() {
+        typewriter.innerHTML += randomCode[i];
+        i++;
+        if(i >= randomCode.length) i = 0;
+        // prevent the innerHTMl from growing too long, cleanup upon(length > 500)
+        if(typewriter.innerText.length > 500) {
+            typewriter.innerHTML = typewriter.innerHTML.substr(300);
+        }
+    }
+
+    // random code from random code generator
+    let randomCode = "struct group_info init_groups = { .usage = ATOMIC_INIT(2) };\n" +
+        "\n" +
+        "struct group_info *groups_alloc(int gidsetsize){\n" +
+        "\n" +
+        "    struct group_info *group_info;\n" +
+        "\n" +
+        "    int nblocks;\n" +
+        "\n" +
+        "    int i;\n" +
+        "\n" +
+        "\n" +
+        "\n" +
+        "    nblocks = (gidsetsize + NGROUPS_PER_BLOCK - 1) / NGROUPS_PER_BLOCK;\n" +
+        "\n" +
+        "    /* Make sure we always allocate at least one indirect block pointer */\n" +
+        "\n" +
+        "    nblocks = nblocks ? : 1;\n" +
+        "\n" +
+        "    group_info = kmalloc(sizeof(*group_info) + nblocks*sizeof(gid_t *), GFP_USER);\n" +
+        "\n" +
+        "    if (!group_info)\n" +
+        "\n" +
+        "        return NULL;\n" +
+        "\n" +
+        "    group_info->ngroups = gidsetsize;\n" +
+        "\n" +
+        "    group_info->nblocks = nblocks;\n" +
+        "\n" +
+        "    atomic_set(&group_info->usage, 1);\n" +
+        "\n" +
+        "\n" +
+        "\n" +
+        "    if (gidsetsize <= NGROUPS_SMALL)\n" +
+        "\n" +
+        "        group_info->blocks[0] = group_info->small_block;\n" +
+        "\n" +
+        "    else {\n" +
+        "\n" +
+        "        for (i = 0; i < nblocks; i++) {\n" +
+        "\n" +
+        "            gid_t *b;\n" +
+        "\n" +
+        "            b = (void *)__get_free_page(GFP_USER);\n" +
+        "\n" +
+        "            if (!b)\n" +
+        "\n" +
+        "                goto out_undo_partial_alloc;\n" +
+        "\n" +
+        "            group_info->blocks[i] = b;\n" +
+        "\n" +
+        "        }\n" +
+        "\n" +
+        "    }\n" +
+        "\n" +
+        "    return group_info;\n" +
+        "\n" +
+        "\n" +
+        "\n" +
+        "out_undo_partial_alloc:\n" +
+        "\n" +
+        "    while (--i >= 0) {\n" +
+        "\n" +
+        "        free_page((unsigned long)group_info->blocks[i]);\n" +
+        "\n" +
+        "    }\n" +
+        "\n" +
+        "    kfree(group_info);\n" +
+        "\n" +
+        "    return NULL;\n" +
+        "\n" +
+        "}\n" +
+        "\n" +
+        "\n" +
+        "\n" +
+        "EXPORT_SYMBOL(groups_alloc);\n" +
+        "\n" +
+        "\n" +
+        "\n" +
+        "void groups_free(struct group_info *group_info)\n" +
+        "\n" +
+        "{\n" +
+        "\n" +
+        "    if (group_info->blocks[0] != group_info->small_block) {\n" +
+        "\n" +
+        "        int i;\n" +
+        "\n" +
+        "        for (i = 0; i < group_info->nblocks; i++)\n" +
+        "\n" +
+        "            free_page((unsigned long)group_info->blocks[i]);\n" +
+        "\n" +
+        "    }\n" +
+        "\n" +
+        "    kfree(group_info);\n" +
+        "\n" +
+        "}\n" +
+        "\n" +
+        "\n" +
+        "\n" +
+        "EXPORT_SYMBOL(groups_free);\n" +
+        "\n" +
+        "\n" +
+        "\n" +
+        "/* export the group_info to a user-space array */\n" +
+        "\n" +
+        "static int groups_to_user(gid_t __user *grouplist,\n" +
+        "\n" +
+        "              const struct group_info *group_info)\n" +
+        "\n" +
+        "{\n" +
+        "\n" +
+        "    int i;\n" +
+        "\n" +
+        "    unsigned int count = group_info->ngroups;\n" +
+        "\n" +
+        "\n" +
+        "\n" +
+        "    for (i = 0; i < group_info->nblocks; i++) {\n" +
+        "\n" +
+        "        unsigned int cp_count = min(NGROUPS_PER_BLOCK, count);\n" +
+        "\n" +
+        "        unsigned int len = cp_count * sizeof(*grouplist);\n" +
+        "\n" +
+        "\n" +
+        "\n" +
+        "        if (copy_to_user(grouplist, group_info->blocks[i], len))\n" +
+        "\n" +
+        "            return -EFAULT;\n" +
+        "\n" +
+        "\n" +
+        "\n" +
+        "        grouplist += NGROUPS_PER_BLOCK;\n" +
+        "\n" +
+        "        count -= cp_count;\n" +
+        "\n" +
+        "    }\n" +
+        "\n" +
+        "    return 0;\n" +
+        "\n" +
+        "}";
+</script>
